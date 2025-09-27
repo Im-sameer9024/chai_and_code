@@ -1,0 +1,86 @@
+# Development mode (with hot reload)
+npm run dev
+
+# Build the project
+npm run build
+
+# Run production build
+npm start
+
+# Type checking only
+npm run type-check
+
+
+
+project setup ------
+
+step--1 :- npm init -y
+
+step--2 :- package.json file update 
+{
+  "name": "express-typescript-app",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+step--3 :- 
+
+# Production dependencies
+npm install express
+npm install -D typescript @types/express @types/node
+
+# Development tools (tsx for running TypeScript directly)
+npm install -D tsx
+
+
+step--4 :- create tsconfig.json file
+
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "es2020",
+    "moduleResolution": "bundler",
+    // "allowImportingTsExtensions": true,
+    // "noEmit": true,
+    
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    
+    // Additional recommended settings
+    "declaration": false,
+    "sourceMap": true,
+    "removeComments": true,
+    "isolatedModules": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
+
+
+step--5 :- project structure
+
+express-typescript-app/
+├── src/
+│   ├── app.ts
+│   ├── routes/
+│   │   └── index.ts
+│   └── types/
+│       └── index.ts
+├── package.json
+├── tsconfig.json
+└── .gitignore
